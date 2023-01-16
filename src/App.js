@@ -10,7 +10,7 @@ const draw = {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { delay, type: "spring", duration: 1.1, bounce: 0 },
+        pathLength: { delay, type: "spring", duration: 0.8, bounce: 0 },
         opacity: { delay, duration: 0.01 }
       }
     };
@@ -160,8 +160,16 @@ export default function TicTacToe() {
   };
   console.log(currentPlayer,"currentPlayer");
 
+  const handleReset =() => {
+    setGameBoard(["","","","","","","","",""])
+    setCurrentPlayer('X')
+    setGameWon(false)
+    setGameTie(false)
+  }
+
   return (
     <>
+    <span style={{color:'white',cursor:'pointer'}} onClick={handleReset}>Reset Game</span>
   <div className="tic-tac-toe">{renderSquares()}</div>
    {gameTie === true ? <span style={{color:'white'}}>Game Tie</span>:null}
    {gameWon === true ? <span style={{color:'white'}}>Game Won</span>:null}
